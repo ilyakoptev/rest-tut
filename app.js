@@ -4,18 +4,14 @@ const mongoose = require("mongoose");
 require("dotenv/config");
 // middlewares
 
-// app.use('/posts', () => {
-//     console.log('This is middleware running')
-// })
-// mongodb+srv://rest-admin:<password>@cluster0-7lt25.mongodb.net/test?retryWrites=true&w=majority
+//import routes
+const postsRoute = require("./routes/posts");
+
+app.use("/posts", postsRoute); // every time i go to the post use postsRoute
 // routes
 
 app.get("/", (req, res) => {
   res.send("We are on home");
-});
-
-app.get("/posts", (req, res) => {
-  res.send("We are on posts");
 });
 
 //connect to DB
