@@ -1,12 +1,14 @@
 const express = require('express')
-
 const app = express()
-    // middlewares
+const mongoose = require('mongoose')
+
+
+// middlewares
 
 // app.use('/posts', () => {
 //     console.log('This is middleware running')
 // })
-// mongodb+srv://rest-admin:<password>@cluster0-7lt25.mongodb.net/test
+// mongodb+srv://rest-admin:<password>@cluster0-7lt25.mongodb.net/test?retryWrites=true&w=majority
 // routes
 
 app.get('/', (req, res) => {
@@ -16,6 +18,12 @@ app.get('/', (req, res) => {
 app.get('/posts', (req, res) => {
     res.send('We are on posts')
 })
+
+//connect to DB 
+
+mongoose.connect('mongodb+srv://rest-admin:niva7112609@cluster0-7lt25.mongodb.net/test?retryWrites=true&w=majority', () =>
+    console.log('Connected to DB ')
+);
 
 // how to we start listening to teh server 
 
