@@ -1,8 +1,7 @@
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
-
-
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+require("dotenv/config");
 // middlewares
 
 // app.use('/posts', () => {
@@ -11,20 +10,24 @@ const mongoose = require('mongoose')
 // mongodb+srv://rest-admin:<password>@cluster0-7lt25.mongodb.net/test?retryWrites=true&w=majority
 // routes
 
-app.get('/', (req, res) => {
-    res.send('We are on home')
-})
+app.get("/", (req, res) => {
+  res.send("We are on home");
+});
 
-app.get('/posts', (req, res) => {
-    res.send('We are on posts')
-})
+app.get("/posts", (req, res) => {
+  res.send("We are on posts");
+});
 
-//connect to DB 
+//connect to DB
 
-mongoose.connect('mongodb+srv://rest-admin:niva7112609@cluster0-7lt25.mongodb.net/test?retryWrites=true&w=majority', () =>
-    console.log('Connected to DB ')
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  {
+    useNewUrlParser: true
+  },
+  () => console.log("Connected to DB ")
 );
 
-// how to we start listening to teh server 
+// how to we start listening to teh server
 
-app.listen(3000)
+app.listen(3000);
